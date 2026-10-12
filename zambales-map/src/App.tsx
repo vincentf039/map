@@ -175,10 +175,16 @@ export default function App({
     zoomLevel,
     borderWeight,
     height,
+    cartoApiKey,
   },
 }: {
   settings: Settings;
 }) {
+  // CARTO requires a free API key for raster tiles (keyless tiles are watermarked).
+  const tileUrl =
+    "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png" +
+    (cartoApiKey ? `?key=${encodeURIComponent(cartoApiKey.trim())}` : "");
+
   const [loading, startTransition] = useTransition();
   const [notices, setNotices] = useState<Notice[]>([]);
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
@@ -563,8 +569,8 @@ export default function App({
             preferCanvas={true}
           >
             <TileLayer
-              attribution="&copy; OpenStreetMap contributors"
-              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"
+              attribution="&copy; OpenStreetMap contributors &copy; CARTO"
+              url={tileUrl}
               className="saturate-500"
             />
 

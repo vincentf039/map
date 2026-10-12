@@ -47,7 +47,7 @@ class My_Elementor_Extension
       "my-react-widget-js",
       plugins_url("assets/main.js", dirname(__FILE__)), // fixed path
       [],
-      "1.0.0",
+      (string) @filemtime(dirname(__DIR__) . "/assets/main.js"),
       true,
     );
 

@@ -76,6 +76,15 @@ class My_Custom_Widget extends Widget_Base {
                 'default' => '#573CAF',
             ]
         );
+        $this->add_control(
+            'cartoApiKey',
+            [
+                'label' => __('CARTO API Key', 'my-elementor-extension'),
+                'type' => Controls_Manager::TEXT,
+                'default' => '',
+                'description' => __('Free key from carto.com/basemaps/apikey. Without it, map tiles show an "API KEY REQUIRED" watermark.', 'my-elementor-extension'),
+            ]
+        );
         $this->end_controls_section();
     }
 
@@ -89,6 +98,7 @@ class My_Custom_Widget extends Widget_Base {
             'mapBorderColor' => $settings['mapBorderColor'],
             'hoverColor' => $settings['hoverColor'],
             'borderWeight' => $settings['borderWeight'],
+            'cartoApiKey' => $settings['cartoApiKey'],
         ]);
 
         echo '<div id="ifl_zambales_map" data-settings=\'' . esc_attr($data) . '\'></div>';

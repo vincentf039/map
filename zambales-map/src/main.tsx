@@ -10,6 +10,7 @@ export type Settings = {
   mapBorderColor: string;
   hoverColor: string;
   borderWeight: number;
+  cartoApiKey?: string;
 };
 
 declare const elementorFrontend: {

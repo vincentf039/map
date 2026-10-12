@@ -10,7 +10,7 @@ export default defineConfig({
     outDir: "../assets",
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(__dirname, "src/main.jsx"),
+      input: resolve(__dirname, "src/main.tsx"),
       output: {
         format: "iife",
         entryFileNames: "main.js",
